@@ -54,14 +54,14 @@ const ContactPage = () => {
     try {
       await new Promise(resolve => setTimeout(resolve, 1500));
       
-      setSubmitMessage('Thank you for your message! We will get back to you soon.');
+      setSubmitMessage('Thank you for your message! We will get back to you soonjkgkdggkgkgku.');
       setFormData({
         name: '',
         email: '',
         subject: '',
         message: ''
       });
-    } catch (error) {
+    } catch {
       setSubmitMessage('There was an error sending your message. Please try again later.');
     } finally {
       setIsSubmitting(false);
@@ -98,7 +98,7 @@ const ContactPage = () => {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-xl md:text-2xl max-w-2xl mx-auto"
           >
-            We'd love to hear from you! Reach out for bookings, questions, or travel advice.
+            We&#39;d love to hear from you! Reach out for bookings, questions, or travel advice.
           </motion.p>
         </div>
       </motion.div>
