@@ -1,17 +1,156 @@
+'use client';
+
+import { FaFacebook, FaTwitter, FaInstagram, FaGlobeAmericas, FaMapMarkerAlt } from 'react-icons/fa';
+import { MdEmail, MdPhone } from 'react-icons/md';
+import Link from 'next/link';
+
 export default function Footer() {
+  const currentYear = new Date().getFullYear();
+
+  // Function to handle email click
+  const handleEmailClick = () => {
+    window.location.href = 'mailto:info@wanderlust.com';
+  };
+
+  // Function to handle phone click
+  const handlePhoneClick = () => {
+    window.location.href = 'tel:+94771234567';
+  };
+
+  // Function to handle location click
+  const handleLocationClick = () => {
+    // Google Maps link for Jaffna, Sri Lanka
+    window.open('https://www.google.com/maps/place/Jaffna,+Sri+Lanka/', '_blank');
+  };
+
   return (
-    <footer style={{
-      backgroundColor: '#f1f1f1',
-      textAlign: 'center',
-      padding: '1rem',
-      marginTop: '2rem',
-      borderTop: '1px solid #ddd'
-    }}>
-      <p>&copy; {new Date().getFullYear()} Wanderlust Travels. All rights reserved.</p>
-      <p style={{ fontSize: '0.9rem' }}>
-        <a href="/privacy" style={{ marginRight: '15px' }}>Privacy Policy</a>
-        <a href="/terms">Terms & Conditions</a>
-      </p>
+    <footer className="bg-blue-900 text-white">
+      <div className="container mx-auto px-4 py-12">
+        {/* Main Content */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+          {/* Company Info */}
+          <div className="space-y-4">
+            <div className="flex items-center space-x-2">
+              <FaGlobeAmericas className="text-amber-400 text-2xl" />
+              <span className="text-xl font-bold">Wanderlust </span>
+            </div>
+            <p className="text-blue-200">
+              Making your travel dreams a reality since 2010. Explore the world
+              with our expertly crafted adventures.
+            </p>
+            <div className="flex space-x-4">
+              <a
+                href="https://www.facebook.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white hover:text-amber-400 transition-colors duration-300"
+              >
+                <FaFacebook size={20} />
+              </a>
+              <a
+                href="https://www.twitter.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white hover:text-amber-400 transition-colors duration-300"
+              >
+                <FaTwitter size={20} />
+              </a>
+              <a
+                href="https://www.instagram.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white hover:text-amber-400 transition-colors duration-300"
+              >
+                <FaInstagram size={20} />
+              </a>
+            </div>
+          </div>
+
+          {/* Quick Links */}
+          <div>
+            <h3 className="text-lg font-semibold mb-4 border-b border-amber-400 pb-2">
+              Quick Links
+            </h3>
+            <ul className="space-y-2">
+              <li>
+                <Link
+                  href="/"
+                  className="text-blue-200 hover:text-amber-400 transition-colors duration-300"
+                >
+                  Home
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/about"
+                  className="text-blue-200 hover:text-amber-400 transition-colors duration-300"
+                >
+                  About Us
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="/contact"
+                  className="text-blue-200 hover:text-amber-400 transition-colors duration-300"
+                >
+                  Contact
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          {/* Contact Info */}
+          <div>
+            <h3 className="text-lg font-semibold mb-4 border-b border-amber-400 pb-2">
+              Contact Us
+            </h3>
+            <ul className="space-y-3">
+              <li 
+                className="flex items-start space-x-2 cursor-pointer hover:text-amber-400 transition-colors duration-300"
+                onClick={handleEmailClick}
+              >
+                <MdEmail className="text-amber-400 mt-1" />
+                <span>info@wanderlusttravel.com</span>
+              </li>
+              <li 
+                className="flex items-start space-x-2 cursor-pointer hover:text-amber-400 transition-colors duration-300"
+                onClick={handlePhoneClick}
+              >
+                <MdPhone className="text-amber-400 mt-1" />
+                <span>+94 771234567</span>
+              </li>
+              <li 
+                className="flex items-start space-x-2 cursor-pointer hover:text-amber-400 transition-colors duration-300"
+                onClick={handleLocationClick}
+              >
+                <FaMapMarkerAlt className="text-amber-400 mt-1" />
+                <span>Jaffna, Sri Lanka.</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        {/* Bottom Bar */}
+        <div className="border-t border-blue-800 pt-6 flex flex-col md:flex-row justify-between items-center">
+          <p className="text-blue-300 text-sm mb-4 md:mb-0">
+            &copy; {currentYear} Wanderlust Travels. All rights reserved.
+          </p>
+          <div className="flex space-x-6">
+            <Link
+              href="/privacy"
+              className="text-blue-300 hover:text-amber-400 text-sm transition-colors duration-300"
+            >
+              Privacy Policy
+            </Link>
+            <Link
+              href="/privacy"
+              className="text-blue-300 hover:text-amber-400 text-sm transition-colors duration-300"
+            >
+              Terms & Conditions
+            </Link>
+          </div>
+        </div>
+      </div>
     </footer>
   );
 }
