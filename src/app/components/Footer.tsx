@@ -1,19 +1,10 @@
+'use client';
+
+import { FaFacebook, FaTwitter, FaInstagram, FaGlobeAmericas, FaMapMarkerAlt } from 'react-icons/fa';
+import { MdEmail, MdPhone } from 'react-icons/md';
+import Link from 'next/link';
+
 export default function Footer() {
-<<<<<<< Updated upstream
-  return (
-    <footer style={{
-      backgroundColor: '#f1f1f1',
-      textAlign: 'center',
-      padding: '1rem',
-      marginTop: '2rem',
-      borderTop: '1px solid #ddd'
-    }}>
-      <p>&copy; {new Date().getFullYear()} Wanderlust Travels. All rights reserved.</p>
-      <p style={{ fontSize: '0.9rem' }}>
-        <a href="/privacy" style={{ marginRight: '15px' }}>Privacy Policy</a>
-        <a href="/terms">Terms & Conditions</a>
-      </p>
-=======
   const currentYear = new Date().getFullYear();
 
   // Function to handle email click
@@ -159,7 +150,6 @@ export default function Footer() {
           </div>
         </div>
       </div>
->>>>>>> Stashed changes
     </footer>
   );
 }
