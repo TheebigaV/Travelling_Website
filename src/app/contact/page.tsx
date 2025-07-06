@@ -54,7 +54,7 @@ const ContactPage = () => {
     try {
       await new Promise(resolve => setTimeout(resolve, 1500));
       
-      setSubmitMessage('Thank you for your message! We will get back to you soon.');
+      setSubmitMessage('Thank you for your message! We will get back to you soonjkgkdggkgkgku.');
       setFormData({
         name: '',
         email: '',
