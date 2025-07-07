@@ -1,24 +1,21 @@
 'use client';
 
-import Link from 'next/link';
 import { useState, useEffect } from 'react';
+import Link from 'next/link';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Sun, Moon, Menu, X, User, Search } from 'lucide-react';
+import { Sun, Moon, Menu, X, User, Search } from 'react-feather';
 
 const navLinks = [
-  { name: 'Home', href: '/' },
-  { name: 'Plan', href: '/travel' },
-  { name: 'Hotels', href: '/hotels', id: 'hotels' },
-  { name: 'Vehicles', href: '/hire' },
-  { name: 'Review', href: '/review' },
+  { id: 1, name: 'Home', href: '/' },
+  { id: 2, name: 'About Us', href: '/about' },
+  { id: 3, name: 'Contact', href: '/contact' },
 ];
 
-const NavItem = ({ link, delay }: { link: { href: string; name: string }; delay: number }) => {
+const NavItem = ({ link, delay }) => {
   return (
-    <li style={{
-      animationDelay: `${delay}ms`
-    }}
+    <li
+      style={{ animationDelay: ${delay}ms }}
       className="relative group cursor-pointer animate-slideIn"
     >
       <Link href={link.href} className="block py-2 text-gray-600 transition-all duration-300 transform hover:text-[#0a1a3a] hover:scale-105 dark:text-gray-300 dark:hover:text-blue-400">
@@ -30,77 +27,43 @@ const NavItem = ({ link, delay }: { link: { href: string; name: string }; delay:
 };
 
 export default function Header() {
-  const [isOpen, setIsOpen] = useState(false);
-  const [searchQuery, setSearchQuery] = useState('');
-  const [theme, setTheme] = useState('light'); // 'light' or 'dark'
   const [scrolled, setScrolled] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
+  const [theme, setTheme] = useState<'light' | 'dark'>('light');
+  const [mounted, setMounted] = useState(false);
+  const [searchQuery, setSearchQuery] = useState('');
 
   useEffect(() => {
-    // Check for saved theme in localStorage
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme) {
-      setTheme(savedTheme);
-      document.documentElement.classList.add(savedTheme);
-    } else {
-      // Default to system preference if no theme is saved
-      if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        setTheme('dark');
-        document.documentElement.classList.add('dark');
-      } else {
-        setTheme('light');
-        document.documentElement.classList.add('light');
-      }
-    }
+    setMounted(true);
+    const savedTheme = localStorage.getItem('theme') as 'light' | 'dark' || 'light';
+    setTheme(savedTheme);
+    document.documentElement.classList.toggle('dark', savedTheme === 'dark');
 
     const handleScroll = () => {
-      if (window.scrollY > 50) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
+      setScrolled(window.scrollY > 20);
     };
-
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
-  };
-
-  const handleSearch = (e: React.FormEvent) => {
-    e.preventDefault();
-    console.log('Searching for:', searchQuery);
-    // Implement actual search logic here
-  };
 
   const toggleTheme = () => {
     const newTheme = theme === 'light' ? 'dark' : 'light';
     setTheme(newTheme);
     localStorage.setItem('theme', newTheme);
-    document.documentElement.classList.remove(theme);
-    document.documentElement.classList.add(newTheme);
+    document.documentElement.classList.toggle('dark');
   };
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    show: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-      },
-    },
+  const toggleMenu = () => setIsOpen(!isOpen);
+
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault();
+    console.log('Searching for:', searchQuery);
   };
 
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    show: { opacity: 1, y: 0 },
-  };
+  if (!mounted) return null;
 
   return (
-    <header className={`fixed w-full z-50 transition-all duration-300 ${
-      scrolled ? 'bg-white dark:bg-gray-900 shadow-lg' : 'bg-transparent'
-    }`}>
+    <header className={fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-white dark:bg-gray-900 shadow-lg' : 'bg-transparent'}}>
       {/* Backdrop Blur Effect */}
       <div className="absolute inset-0 bg-white/75 dark:bg-gray-900/75 backdrop-blur-sm -z-10" />
       
@@ -124,7 +87,7 @@ export default function Header() {
           {/* Desktop Navigation */}
           <ul className="hidden md:flex space-x-8">
             {navLinks.map((link, index) => (
-              <NavItem // Assuming NavItem needs an 'id' prop, add it to navLinks if not present
+              <NavItem
                 key={link.id}
                 link={link}
                 delay={index * 100}
@@ -173,36 +136,7 @@ export default function Header() {
               {isOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
           </div>
-
-          {/* Animated Nav Links */}
-          <motion.ul
-            className="hidden md:flex gap-6"
-            variants={containerVariants}
-            initial="hidden"
-            animate="show"
-          >
-            {navLinks.map((link) => (
-              <motion.div
-                key={link.name}
-                variants={itemVariants}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                <Link
-                  href={link.href}
-                  className="relative text-gray-700 font-medium transition-colors duration-200 hover:text-blue-600"
-                >
-                  {/* Underline animation */}
-                  <span className="relative group">
-                    {link.name}
-                    <span className="absolute left-0 bottom-0 w-0 h-0.5 bg-blue-600 group-hover:w-full transition-all duration-300"></span>
-                  </span>
-                </Link>
-              </motion.div>
-            ))}
-          </motion.ul>
         </div>
-
 
         {/* Mobile Menu */}
         <AnimatePresence>
@@ -218,7 +152,7 @@ export default function Header() {
                 <ul className="space-y-2">
                   {navLinks.map((link, index) => (
                     <NavItem
-                      key={link.id || index} // Fallback to index if id is not present
+                      key={link.id}
                       link={link}
                       delay={index * 100}
                     />
