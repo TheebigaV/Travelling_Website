@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 
 export default function Navbar() {
   return (
@@ -17,6 +18,17 @@ export default function Navbar() {
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Sun, Moon, Menu, X, User, Search } from 'react-feather';
+=======
+import Image from 'next/image';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Sun, Moon, Menu, X, User, Search } from 'react-feather';
+import { Dancing_Script } from 'next/font/google';
+
+const dancingScript = Dancing_Script({
+  subsets: ['latin'],
+  weight: '700',
+});
+>>>>>>> Stashed changes
 
 const navLinks = [
   { id: 1, name: 'Home', href: '/' },
@@ -41,9 +53,15 @@ const NavItem = ({ link, delay }: NavItemProps) => {
       style={{ animationDelay: `${delay}ms` }}
       className="relative group cursor-pointer animate-slideIn"
     >
+<<<<<<< Updated upstream
       <Link href={link.href} className="block py-2 text-gray-600 transition-all duration-300 transform hover:text-[#0a1a3a] hover:scale-105 dark:text-gray-300 dark:hover:text-blue-400">
         {link.name}
         <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#0a1a3a] transition-all duration-300 group-hover:w-full dark:bg-blue-400" />
+=======
+      <Link href={link.href} className="block py-2 font-bold text-[#000080] transition-all duration-300 transform hover:text-[#0000CD] hover:scale-105 dark:text-gray-300 dark:hover:text-blue-400">
+        {link.name}
+        <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#0000CD] transition-all duration-300 group-hover:w-full dark:bg-blue-400" />
+>>>>>>> Stashed changes
       </Link>
     </li>
   );
@@ -97,6 +115,7 @@ export default function Header() {
             <Image
               src="/logo.png"
               alt="Sri Lanka Travel Logo"
+<<<<<<< Updated upstream
               width={30}
               height={30}
               className="rounded-lg"
@@ -107,6 +126,19 @@ export default function Header() {
             </span>
           </Link>
 
+=======
+              width={25}
+              height={25}
+              className="rounded-lg"
+              priority
+            />
+            <span className={`ml-2 text-2xl tracking-wide bg-gradient-to-r from-[#0E3386] to-[#FFC72C] bg-clip-text text-transparent ${dancingScript.className}`}>
+              Wanderlust
+            </span>
+          </Link>
+
+
+>>>>>>> Stashed changes
           {/* Desktop Navigation */}
           <ul className="hidden md:flex space-x-8">
             {navLinks.map((link, index) => (
@@ -127,14 +159,22 @@ export default function Header() {
                 placeholder="Search..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
+<<<<<<< Updated upstream
                 className="pl-10 pr-4 py-2 rounded-full border border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-[#0a1a3a] dark:focus:ring-blue-400 focus:border-transparent text-sm w-40 transition-all duration-300 bg-white dark:bg-gray-800"
+=======
+                className="pl-10 pr-4 py-2 rounded-full border border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-[#003153] dark:focus:ring-blue-400 focus:border-transparent text-sm w-40 transition-all duration-300 bg-white dark:bg-gray-800"
+>>>>>>> Stashed changes
               />
               <Search className="absolute left-3 top-2.5 h-4 w-4 text-gray-400 dark:text-gray-300" />
             </form>
 
             {/* User Icon */}
             <button
+<<<<<<< Updated upstream
               className="p-2 rounded-full text-gray-600 dark:text-gray-300 hover:text-[#0a1a3a] dark:hover:text-blue-400 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+=======
+              className="p-2 rounded-full text-[#003153] dark:text-gray-300 hover:text-[#0a1a3a] dark:hover:text-blue-400 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+>>>>>>> Stashed changes
               aria-label="User account"
             >
               <User size={20} />
@@ -143,7 +183,11 @@ export default function Header() {
             {/* Theme Toggle */}
             <button
               onClick={toggleTheme}
+<<<<<<< Updated upstream
               className="p-2 rounded-full text-gray-600 dark:text-gray-300 hover:text-[#0a1a3a] dark:hover:text-blue-400 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+=======
+              className="p-2 rounded-full text-[#003153] dark:text-gray-300 hover:text-[#0a1a3a] dark:hover:text-blue-400 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+>>>>>>> Stashed changes
               aria-label="Toggle theme"
             >
               {theme === 'light' ? <Moon size={20} /> : <Sun size={20} />}
@@ -152,7 +196,11 @@ export default function Header() {
             {/* Mobile Menu Button */}
             <button
               onClick={toggleMenu}
+<<<<<<< Updated upstream
               className="md:hidden p-2 rounded-md text-gray-600 dark:text-gray-300 hover:text-[#0a1a3a] dark:hover:text-blue-400 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+=======
+              className="md:hidden p-2 rounded-md text-[#003153] dark:text-gray-300 hover:text-[#0a1a3a] dark:hover:text-blue-400 hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+>>>>>>> Stashed changes
               aria-expanded="false"
             >
               <span className="sr-only">Open main menu</span>
@@ -189,7 +237,11 @@ export default function Header() {
                     placeholder="Search..."
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
+<<<<<<< Updated upstream
                     className="pl-10 pr-4 py-2 w-full rounded-full border border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-[#0a1a3a] dark:focus:ring-blue-400 focus:border-transparent text-sm bg-white dark:bg-gray-700"
+=======
+                    className="pl-10 pr-4 py-2 w-full rounded-full border border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-[#003153] dark:focus:ring-blue-400 focus:border-transparent text-sm bg-white dark:bg-gray-700"
+>>>>>>> Stashed changes
                   />
                   <Search className="absolute left-6 top-3 h-4 w-4 text-gray-400 dark:text-gray-300" />
                 </form>
@@ -199,6 +251,9 @@ export default function Header() {
         </AnimatePresence>
       </nav>
     </header>
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
   );
 }
