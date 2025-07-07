@@ -23,14 +23,6 @@ export default function Footer() {
   };
 
   return (
-<<<<<<< Updated upstream
-
-=======
-<<<<<<< HEAD
-=======
-
->>>>>>> 2dbe9c2f5354de66c8dd39ceed9d20b085359650
->>>>>>> Stashed changes
     <footer className="bg-[#0a1a3a] text-white">
       <div className="container mx-auto px-4 py-12">
         {/* Main Content */}
@@ -42,16 +34,6 @@ export default function Footer() {
               <span className="text-xl font-bold text-[#f8c537]">Wanderlust</span>
             </div>
             <p className="text-[#a3b3d8]">
-<<<<<<< Updated upstream
-
-             
-=======
-<<<<<<< HEAD
-=======
-
-             
->>>>>>> 2dbe9c2f5354de66c8dd39ceed9d20b085359650
->>>>>>> Stashed changes
               Making your travel dreams a reality since 2010. Explore the world
               with our expertly crafted adventures.
             </p>
@@ -122,15 +104,7 @@ export default function Footer() {
               Contact Us
             </h3>
             <ul className="space-y-3">
-<<<<<<< Updated upstream
-              <li
-=======
-<<<<<<< HEAD
               <li 
-=======
-              <li
->>>>>>> 2dbe9c2f5354de66c8dd39ceed9d20b085359650
->>>>>>> Stashed changes
                 className="flex items-start space-x-2 cursor-pointer text-[#a3b3d8] hover:text-[#f8c537] transition-colors duration-300"
                 onClick={handleEmailClick}
               >
@@ -156,39 +130,14 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-<<<<<<< Updated upstream
-=======
-<<<<<<< HEAD
         <div className="border-t border-[#1a2d5a] pt-6 flex flex-col md:flex-row justify-between items-center">
           <p className="text-[#a3b3d8] text-sm mb-4 md:mb-0">
-=======
->>>>>>> Stashed changes
-
-        <div className="border-t border-[#1a2d5a] pt-6 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-[#a3b3d8] text-sm mb-4 md:mb-0">
-
-<<<<<<< Updated upstream
-=======
->>>>>>> 2dbe9c2f5354de66c8dd39ceed9d20b085359650
->>>>>>> Stashed changes
             &copy; {currentYear} Wanderlust Travels. All rights reserved.
           </p>
           <div className="flex space-x-6">
             <Link
               href="/privacy"
-<<<<<<< Updated upstream
-
               className="text-[#a3b3d8] hover:text-[#f8c537] text-sm transition-colors duration-300"
-
-=======
-<<<<<<< HEAD
-              className="text-[#a3b3d8] hover:text-[#f8c537] text-sm transition-colors duration-300"
-=======
-
-              className="text-[#a3b3d8] hover:text-[#f8c537] text-sm transition-colors duration-300"
-
->>>>>>> 2dbe9c2f5354de66c8dd39ceed9d20b085359650
->>>>>>> Stashed changes
             >
               Privacy Policy
             </Link>
