@@ -12,13 +12,13 @@ const navLinks = [
   { id: 3, name: 'Contact', href: '/contact' },
 ];
 
-const NavItem = ({ link, delay }) => {
+const NavItem = ({ link, delay }: { link: { name: string; href: string }; delay: number }) => {
   return (
     <li
-      style={{ animationDelay: ${delay}ms }}
-      const className="relative group cursor-pointer animate-slideIn"
+      style={{ animationDelay: `${delay}ms` }}
+      className="relative group cursor-pointer animate-slideIn"
     >
-      <Link href={Link.href} className="block py-2 text-gray-600 transition-all duration-300 transform hover:text-[#0a1a3a] hover:scale-105 dark:text-gray-300 dark:hover:text-blue-400">
+      <Link href={link.href} className="block py-2 text-gray-600 transition-all duration-300 transform hover:text-[#0a1a3a] hover:scale-105 dark:text-gray-300 dark:hover:text-blue-400">
         {link.name}
         <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#0a1a3a] transition-all duration-300 group-hover:w-full dark:bg-blue-400" />
       </Link>
@@ -63,7 +63,7 @@ export default function Header() {
   if (!mounted) return null;
 
   return (
-    <header className={fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-white dark:bg-gray-900 shadow-lg' : 'bg-transparent'}}>
+    <header className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? 'bg-white dark:bg-gray-900 shadow-lg' : 'bg-transparent'}`}>
       {/* Backdrop Blur Effect */}
       <div className="absolute inset-0 bg-white/75 dark:bg-gray-900/75 backdrop-blur-sm -z-10" />
       
