@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Sun, Moon, Menu, X, User, Search } from 'react-feather';
-import styles from './Header.module.css';
+import styles from '@/app/components/Header.module.css'; 
 
 const navLinks = [
   { id: 1, name: 'Home', href: '/' },
@@ -48,7 +48,7 @@ export default function Header() {
 
   useEffect(() => {
     setMounted(true);
-    const savedTheme = localStorage.getItem('theme') as 'light' | 'dark' || 'light';
+    const savedTheme = (localStorage.getItem('theme') as 'light' | 'dark') || 'light';
     setTheme(savedTheme);
     document.documentElement.classList.toggle('dark', savedTheme === 'dark');
 
@@ -77,7 +77,7 @@ export default function Header() {
     if (pathname === '/') {
       window.scrollTo({
         top: 0,
-        behavior: 'smooth'
+        behavior: 'smooth',
       });
     }
   };
@@ -87,12 +87,12 @@ export default function Header() {
   return (
     <header className={`${styles.header} ${scrolled ? styles.headerScrolled : ''}`}>
       <div className={styles.backdrop} />
-      
+
       <nav className={styles.navContainer}>
         <div className={styles.navInner}>
-          {/* Logo with scroll to top functionality */}
-          <Link 
-            href="/" 
+          {/* Logo */}
+          <Link
+            href="/"
             className={styles.logo}
             onClick={scrollToTop}
             scroll={false}
@@ -106,17 +106,13 @@ export default function Header() {
           {/* Desktop Navigation */}
           <ul className={styles.navList}>
             {navLinks.map((link, index) => (
-              <NavItem
-                key={link.id}
-                link={link}
-                delay={index * 100}
-              />
+              <NavItem key={link.id} link={link} delay={index * 100} />
             ))}
           </ul>
 
-          {/* Right Side Controls */}
+          {/* Controls */}
           <div className={styles.controls}>
-            {/* Search Bar */}
+            {/* Search */}
             <form onSubmit={handleSearch} className={styles.searchForm}>
               <input
                 type="text"
@@ -128,28 +124,21 @@ export default function Header() {
               <Search className={styles.searchIcon} />
             </form>
 
-            {/* User Icon */}
-            <button
-              className={styles.iconButton}
-              aria-label="User account"
-            >
+            {/* User */}
+            <button className={styles.iconButton} aria-label="User account">
               <User size={20} />
             </button>
 
             {/* Theme Toggle */}
-            <button
-              onClick={toggleTheme}
-              className={styles.iconButton}
-              aria-label="Toggle theme"
-            >
+            <button onClick={toggleTheme} className={styles.iconButton} aria-label="Toggle theme">
               {theme === 'light' ? <Moon size={20} /> : <Sun size={20} />}
             </button>
 
-            {/* Mobile Menu Button */}
+            {/* Mobile Menu Toggle */}
             <button
               onClick={toggleMenu}
               className={styles.mobileMenuButton}
-              aria-expanded="false"
+              aria-expanded={isOpen}
             >
               <span className="sr-only">Open main menu</span>
               {isOpen ? <X size={24} /> : <Menu size={24} />}
@@ -170,11 +159,7 @@ export default function Header() {
               <div className={styles.mobileMenuContent}>
                 <ul className={styles.mobileNavList}>
                   {navLinks.map((link, index) => (
-                    <NavItem
-                      key={link.id}
-                      link={link}
-                      delay={index * 100}
-                    />
+                    <NavItem key={link.id} link={link} delay={index * 100} />
                   ))}
                 </ul>
 
