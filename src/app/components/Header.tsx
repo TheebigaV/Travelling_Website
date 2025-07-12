@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Sun, Moon, Menu, X, User, Search } from 'react-feather';
-import styles from '@/app/components/Header.module.css'; 
+import styles from '@/app/components/Header.module.css';
 
 const navLinks = [
   { id: 1, name: 'Home', href: '/' },
@@ -77,7 +77,7 @@ export default function Header() {
     if (pathname === '/') {
       window.scrollTo({
         top: 0,
-        behavior: 'smooth',
+        behavior: 'smooth'
       });
     }
   };
@@ -90,9 +90,9 @@ export default function Header() {
 
       <nav className={styles.navContainer}>
         <div className={styles.navInner}>
-          {/* Logo */}
-          <Link
-            href="/"
+          {/* Logo with scroll to top functionality */}
+          <Link 
+            href="/" 
             className={styles.logo}
             onClick={scrollToTop}
             scroll={false}
@@ -106,13 +106,17 @@ export default function Header() {
           {/* Desktop Navigation */}
           <ul className={styles.navList}>
             {navLinks.map((link, index) => (
-              <NavItem key={link.id} link={link} delay={index * 100} />
+              <NavItem
+                key={link.id}
+                link={link}
+                delay={index * 100}
+              />
             ))}
           </ul>
 
-          {/* Controls */}
+          {/* Right Side Controls */}
           <div className={styles.controls}>
-            {/* Search */}
+            {/* Search Bar */}
             <form onSubmit={handleSearch} className={styles.searchForm}>
               <input
                 type="text"
@@ -124,17 +128,24 @@ export default function Header() {
               <Search className={styles.searchIcon} />
             </form>
 
-            {/* User */}
-            <button className={styles.iconButton} aria-label="User account">
+            {/* User Icon */}
+            <button
+              className={styles.iconButton}
+              aria-label="User account"
+            >
               <User size={20} />
             </button>
 
             {/* Theme Toggle */}
-            <button onClick={toggleTheme} className={styles.iconButton} aria-label="Toggle theme">
+            <button
+              onClick={toggleTheme}
+              className={styles.iconButton}
+              aria-label="Toggle theme"
+            >
               {theme === 'light' ? <Moon size={20} /> : <Sun size={20} />}
             </button>
 
-            {/* Mobile Menu Toggle */}
+            {/* Mobile Menu Button */}
             <button
               onClick={toggleMenu}
               className={styles.mobileMenuButton}
@@ -159,7 +170,11 @@ export default function Header() {
               <div className={styles.mobileMenuContent}>
                 <ul className={styles.mobileNavList}>
                   {navLinks.map((link, index) => (
-                    <NavItem key={link.id} link={link} delay={index * 100} />
+                    <NavItem
+                      key={link.id}
+                      link={link}
+                      delay={index * 100}
+                    />
                   ))}
                 </ul>
 
