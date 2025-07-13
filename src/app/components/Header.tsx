@@ -29,6 +29,7 @@ const NavItem = ({ link, delay }: NavItemProps) => {
     <li
       style={{ animationDelay: `${delay}ms` }}
       className={styles.navItem}
+
     >
       <Link href={link.href} className={styles.navLink}>
         {link.name}
@@ -85,6 +86,7 @@ export default function Header() {
   if (!mounted) return null;
 
   return (
+
     <header className={`${styles.header} ${scrolled ? styles.headerScrolled : ''}`}>
       <div className={styles.backdrop} />
 
@@ -100,6 +102,7 @@ export default function Header() {
             <span className={styles.logoText}>
               <span className={styles.wander}>Wander</span>
               <span className={styles.lust}>lust</span>
+
             </span>
           </Link>
 
